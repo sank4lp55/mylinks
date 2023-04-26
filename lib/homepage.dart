@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -10,7 +11,13 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  var insta = Uri.parse('https://www.instagram.com/bdcoe/');
+  //var insta = Uri.parse('https://www.instagram.com/bdcoe/');
+  _launchURL() async {
+    const url = 'https://www.instagram.com/bdcoe/';
+    final uri = Uri.parse(url);
+    await launchUrl(uri);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +75,7 @@ class _HomepageState extends State<Homepage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
-                onTap: () {},
+                onTap: _launchURL,
                 child: Container(
                   width: 250,
                   height: 50,
